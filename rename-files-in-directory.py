@@ -1,5 +1,7 @@
-# This script looks at files at the base level of the current directory and renames them.
-# It ignores hidden files and directories.
+"""
+This script looks at files at the base level of the current directory and renames them.
+It ignores hidden files and directories.
+"""
 
 import re
 from pathlib import Path
