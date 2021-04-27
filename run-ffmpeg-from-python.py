@@ -11,13 +11,12 @@ import subprocess
 
 ## replace this with path for your ffmpeg binary if you're not using homebrew on MacOS
 ffmpeg = "/usr/local/bin/ffmpeg"
-
-## ffmpeg commands to use, commands should each be a string entered in a list, example command:
-## [ffmpeg, "-i", input_file, "-c:v", "libx264", "-preset", "fast", "crf", "22", "-s", "1280x720", "-c:a", "libfdk_aac", "-b:a", "196k", "-ar", "44100", "-pix_fmt", "yuv420p", output_file]
-commands_list = []
-
 input_file = "/path/to/input/file"
 output_file = "path/to/desired/output/output_file.ext"
+
+## ffmpeg commands to use, commands should each be a string entered in a list, example command:
+## [ffmpeg, "-i", input_file, "-c:v", "libx264", "-preset", "fast", "-crf", "22", "-s", "1280x720", "-c:a", "aac", "-b:a", "196k", "-ar", "44100", "-pix_fmt", "yuv420p", output_file]
+commands_list = []
 
 def runFFmpeg(commands):
     if subprocess.run(commands).returncode == 0:
@@ -25,4 +24,4 @@ def runFFmpeg(commands):
     else:
         print ("There was an error running your FFmpeg script")
 
-runFFmpeg()
+runFFmpeg(commands_list)
