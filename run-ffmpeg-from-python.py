@@ -12,3 +12,11 @@ commands_list = []
 
 input_file = "/path/to/input/file"
 output_file = "path/to/desired/output/output_file.ext"
+
+def runFFmpeg(commands):
+    if subprocess.run(commands).returncode == 0:
+        print ("FFmpeg Script Ran Successfully")
+    else:
+        print ("There was an error running your FFmpeg script")
+
+runFFmpeg()
