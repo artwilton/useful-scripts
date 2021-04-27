@@ -12,3 +12,7 @@ calculateDifference(start, end):
         if '.' not in time:
             time = time + '.0'
         return time
+
+    start = datetime.datetime.strptime(decimalCheck(start), "%H:%M:%S.%f")
+    end = datetime.datetime.strptime(decimalCheck(end), "%H:%M:%S.%f")
+    return (end - start).microseconds/1000000
