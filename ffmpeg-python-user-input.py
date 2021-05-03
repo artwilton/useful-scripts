@@ -1,7 +1,8 @@
 import subprocess
 
 ## defualts
-ffmpeg = "/usr/local/bin/ffmpeg"
+# ffmpeg = "/usr/local/bin/ffmpeg"
+ffmpeg = "/Users/arthur/Desktop/ffmpeg"
 
 def grabUserInput():
 
@@ -17,7 +18,7 @@ def grabUserInput():
     user_input_dict = {}
 
     user_input_dict["input_file"] = filterInput("Input File: ", "")
-    user_input_dict["output_file"] = filterInput("Output File (default = ~/Desktop/video.mp4): ", "~/Desktop/video.mp4")
+    user_input_dict["output_file"] = filterInput("Output File (default = ./video.mp4): ", "./video.mp4")
     user_input_dict["video_codec"] = filterInput("Video Codec (default = libx264): ", "libx264")
     user_input_dict["audio_codec"] = filterInput("Audio Codec (default = aac): ", "aac") 
     user_input_dict["audio_bitrate"] = filterInput("Audio Bitrate (default = 196k): ", "196k")
@@ -60,9 +61,9 @@ def buildFFmpegCommand():
 def runFFmpeg(commands):
 
     print(commands)
-    # if subprocess.run(commands).returncode == 0:
-    #     print ("FFmpeg Script Ran Successfully")
-    # else:
-    #     print ("There was an error running your FFmpeg script")
+    if subprocess.run(commands).returncode == 0:
+        print ("FFmpeg Script Ran Successfully")
+    else:
+        print ("There was an error running your FFmpeg script")
 
 runFFmpeg(buildFFmpegCommand())
