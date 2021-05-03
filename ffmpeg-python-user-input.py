@@ -16,12 +16,13 @@ def grabUserInput():
 
         if user_input == "":
             user_input = default
-
         return user_input
 
     print("Hit enter for default values\n")
 
-    input_file = filterInput("Input File: ", "")
+    user_input_dict = {}
+
+    user_input_dict[input_file] = filterInput("Input File: ", "")
     output_file = filterInput("Output File (default = ~/Desktop): ", "~/Desktop")
     video_codec = filterInput("Video Codec (default = libx264): ", "libx264")
     audio_codec = filterInput("Audio Codec (default = aac): ", "aac") 
@@ -29,6 +30,8 @@ def grabUserInput():
     sample_rate = filterInput("Sample Rate (default = 44100): ", "44100")
     encoding_speed = filterInput("Encoding Speed: (default = fast): ", "fast")
     crf = filterInput("Constant Rate Factor: (default = 22): ", "22")
+
+    print(user_input_dict)
 
 # def runFFmpeg(commands):
 #     if subprocess.run(commands).returncode == 0:
