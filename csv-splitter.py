@@ -7,15 +7,14 @@ with open(csv_file_path) as csv_file:
     csv_reader = csv.reader(csv_file, delimiter=',')
 
     column_headers = []
+    line_count = 0
   
-    # loop to iterate thorugh the rows of csv
     for row in csv_reader:
+
+        if line_count == 0:
+            column_headers = row
+            line_count += 1
   
-        # adding the first row
-        column_headers.append(row)
-  
-        # breaking the loop after the
-        # first iteration itself
-        break
+        line_count += 1
 
     print(column_headers)
