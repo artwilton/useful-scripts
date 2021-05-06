@@ -1,20 +1,30 @@
 import csv
 
 csv_file_path = "/Users/arthur/Desktop/csv_test.csv"
-row_split_amount = 10000
+split_threshold = 2
+
+def loopThroughCsv(csv):
+    column_headers = []
+    row_counter = 0
+    split_number = 1
+
+    for row in csv:
+
+        if row_counter == 0:
+            column_headers = row
+            print(f"column headers = {column_headers}")
+        else:
+            if row_counter > split_threshold:
+                split_number += 1
+                print(f"write new row to csv{split_number}")
+                row_counter = 1
+            else:
+                print(f"write new row to csv{split_number}")
+
+        row_counter += 1
+        print(f"row counter: {row_counter}")
 
 with open(csv_file_path) as csv_file:
     csv_reader = csv.reader(csv_file, delimiter=',')
 
-    column_headers = []
-    line_count = 0
-  
-    for row in csv_reader:
-
-        if line_count == 0:
-            column_headers = row
-            line_count += 1
-  
-        line_count += 1
-
-    print(column_headers)
+    loopThroughCsv(csv_reader)
