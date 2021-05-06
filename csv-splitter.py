@@ -1,7 +1,7 @@
 import csv
 
 csv_file_path = "/Users/arthur/Desktop/csv_test.csv"
-split_threshold = input('Enter how many rows per CSV file you would like: ')
+split_threshold = int(input('Enter how many rows per CSV file you would like: '))
 
 def loopThroughCsv(csv):
     column_headers = []
@@ -22,7 +22,6 @@ def loopThroughCsv(csv):
                 print(f"write new row to csv{split_number}")
 
         row_counter += 1
-        print(f"row counter: {row_counter}")
 
 with open(csv_file_path) as csv_file:
     csv_reader = csv.reader(csv_file, delimiter=',')
