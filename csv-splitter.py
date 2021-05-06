@@ -1,7 +1,7 @@
 import csv
 
 csv_file_path = "/Users/arthur/Desktop/csv_test.csv"
-split_threshold = 2
+split_threshold = input('Enter how many rows per CSV file you would like: ')
 
 def loopThroughCsv(csv):
     column_headers = []
