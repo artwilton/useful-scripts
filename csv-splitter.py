@@ -1,7 +1,9 @@
-import csv
+"""
+This script takes in two inputs, a path to a csv file and the amount of rows a user wants to split that csv file into.
+The column headers will be copied over to the first row of each csv file.
+"""
 
-csv_file_path = "/Users/arthur/Desktop/csv_test.csv"
-split_threshold = int(input('Enter how many rows per CSV file you would like: '))
+import csv
 
 def writeNewCsv(csv_file_write, column_headers, split_number):
 
@@ -10,7 +12,7 @@ def writeNewCsv(csv_file_write, column_headers, split_number):
 
     return writer
 
-def loopThroughCsv(csv, column_headers):
+def loopThroughCsv(csv, split_threshold, column_headers):
 
     row_counter = 0
     split_number = 0
@@ -35,10 +37,15 @@ def loopThroughCsv(csv, column_headers):
         row_counter += 1
 
 def main():
+
+    # grab inputs from user
+    csv_file_path = input('Enter csv file path: ')
+    split_threshold = int(input('Enter how many rows per CSV file you would like: '))
+
     with open(csv_file_path) as csv_file:
         csv_reader = csv.DictReader(csv_file)
         column_headers = csv_reader.fieldnames
-        loopThroughCsv(csv_reader, column_headers)
+        loopThroughCsv(csv_reader, split_threshold, column_headers)
 
 if __name__ == "__main__":
     main()
