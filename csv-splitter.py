@@ -14,10 +14,16 @@ def loopThroughCsv(csv, column_headers):
 
     row_counter = 0
     split_number = 0
+    write_csv = None
 
     for row in csv:
 
         if (row_counter == 0) or (row_counter == split_threshold):
+
+            # close file if it already exists before writing to a new csv file
+            if write_csv:
+                write_csv.close()
+
             split_number += 1
             write_csv = open(f'CSV_{split_number}.csv', 'w')
             writer = writeNewCsv(write_csv, column_headers, split_number)
@@ -36,5 +42,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-## need to figure out logic to close file
