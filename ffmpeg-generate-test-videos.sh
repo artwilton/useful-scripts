@@ -23,7 +23,7 @@ format_frame_rate () {
 
 filter_timecode () {
     # determine proper timecode format based on 'NDF' or 'DF' present in frame_rate string
-    if [[ $1 == *"NDF" ]]; then
+    if [[ $1 == *"_DF" ]]; then
         start_timecode="00:00:00;00"
     else
         start_timecode="00:00:00:00"
@@ -39,10 +39,10 @@ format_timecode_for_drawtext () {
 for frame_rate in ${frame_rate_array[@]}; do
 
     format_frame_rate $frame_rate
-    filter_timecode $start_timecode
+    filter_timecode $frame_rate
     format_timecode_for_drawtext $start_timecode
     
-    ffmpeg -f lavfi -i smptehdbars=duration=$video_duration:size=1280x720:rate=$frame_rate_ffmpeg \
+    /Users/arthur/Desktop/ffmpeg -f lavfi -i smptehdbars=duration=$video_duration:size=1280x720:rate=$frame_rate_ffmpeg \
     -f lavfi -i sine=frequency=1000:sample_rate=48000:duration=$video_duration \
     -vf "[in]drawtext=fontfile=$font_family_path:fontsize=$font_size:text='Frame\: %{frame_num}':start_number=0: \
     x=(w-tw)/2:y=h-(2*lh):fontcolor=white:box=1:boxcolor=black:boxborderw=4, \
